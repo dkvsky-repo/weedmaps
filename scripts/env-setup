@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+nvm install 12.18.3
+nvm use 12.18.3
+npm install --global yarn
+sudo apt-get update --yes -qq;
+sudo apt-get install --yes -qq libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb;
+yarn install
+echo "install complete"
+exit 0

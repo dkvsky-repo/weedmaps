@@ -1,0 +1,54 @@
+{
+  "name": "kali-mist",
+  "description": "Technical Assessment for Front-end Engineering Candidates",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "lodash.get": "^4.4.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-query": "^2.26.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
+    "serve": "^11.3.2",
+    "styled-components": "^5.2.0",
+    "typescript": "~4.0.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "cypress:ci": "concurrently -k --success=\"first\" \"yarn build && yarn serve -s build -l 3000\" \"wait-on http://localhost:3000 && yarn cypress run --config watchForFileChanges=false,video=false\"",
+    "ci": "concurrently \"CI=true JEST_JUNIT_OUTPUT_DIR=results JEST_JUNIT_OUTPUT_NAME=jest.xml yarn test --testResultsProcessor=\"jest-junit\"\" \"yarn cypress:ci\"",
+    "package": "rm kali-mist.zip && zip -r9 kali-mist.zip . -x \"node_modules*\" -x \"coverage*\" -x \".git*\" -x \".DS_Store\""
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@testing-library/cypress": "^7.0.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.4",
+    "@testing-library/user-event": "^12.1.5",
+    "@types/jest": "^24.0.0",
+    "@types/lodash": "^4.14.161",
+    "@types/lodash.get": "^4.4.6",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.6",
+    "@types/styled-components": "^5.1.3",
+    "concurrently": "^5.3.0",
+    "cypress": "^5.4.0",
+    "jest-junit": "^12.0.0",
+    "jest-mock": "^26.3.0",
+    "wait-on": "^5.2.0"
+  }
+}
