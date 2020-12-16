@@ -2,6 +2,7 @@
 // Section 5
 // Given the URL structure of /[retailerType]/[wmid]
 // parse the wmid from the url and pass it to the useRetailer hook
+// ✅
 
 // PART 4
 // Finish the retailers page to responsively display:
@@ -27,8 +28,8 @@ const BusinessNameWrapper: StyledComponent<
   never
 > = styled.div<StyleProps>``;
 
-function Retailer() {
-  const wmid = "1";
+function Retailer({ match }: {match: any}) {
+  const { wmid } = match.params;
   const { data, isLoading, isError } = useRetailer(wmid);
 
   const { rating = 0, name = "", business_hours = {} } = data?.listing || {};

@@ -9,8 +9,11 @@
 // Retailer component only renders for path /retailerType/:wmid
 // where retailerType is dispensaries | deliveries | doctors
 
+// ✅
+
 import React from "react";
 import { render } from "react-dom";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { createGlobalStyle } from "styled-components";
 import Home from "./pages/";
 import Retailer from "./pages/retailer";
@@ -33,8 +36,12 @@ function ContextWrapper() {
     <GlobalContext.Provider value={globalValues}>
       <ReactQueryCacheProvider queryCache={queryCache}>
         <GlobalStyle />
-        <Home />
-        <Retailer />
+        <Router>
+          <Switch>
+            <Route path="/:retailerType/:wmid" component={Retailer} />
+            <Route path="/" exact component={Home} />
+          </Switch>
+        </Router>
       </ReactQueryCacheProvider>
     </GlobalContext.Provider>
   );

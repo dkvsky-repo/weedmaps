@@ -4,6 +4,9 @@
 // ie /deliveries/23456789, /dispensaries/0987654321, /doctors/5678909876
 // Import and use react-routers Link component
 
+// @see This will be implemented in /listing-cards/index.jsx
+// ✅
+
 import React from "react";
 import Avatar from "../avatar";
 import Stars from "../stars";

@@ -42,20 +42,22 @@ This challenge is a partially completed project which is described in more detai
 
 Implement the router and links between various components. More detail is available in the component definitions.
 
-- `src/index.tsx`
-- `src/components/header/index.tsx`
-- `src/components/listing-card/index.tsx`
-- `src/templates/default/index.tsx`
-- `src/pages/retailer.tsx`
+- ✅ `src/index.tsx`
+- ✅ `src/components/header/index.tsx`
+- ✅ `src/components/listing-card/index.tsx`
+- ✅ `src/templates/default/index.tsx`
+- ✅ `src/pages/retailer.tsx`
 
 ### Star rating
 
 Using the provided component, `/src/components/star/index.tsx`, implement the remaining user interface for star ratings as described in the component definition.
 
 ### Retailer hours
+
 Using the provided component, `src/components/hours/index.tsx`, render the retailer hours for each day of the week.
 
 ### Retailer page
+
 We encourage you to have fun with the ui styling here. With a focus on mobile devices, finish styling the retailer page, `/src/pages/retailer.tsx`. Use modern CSS and responsive techniques to style the information you would like to see rendered. At a minimum, this should inlude the retailer's name, star rating, and business hours.
 
 ## Delivering Your Completed Challenge

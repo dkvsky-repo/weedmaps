@@ -45,7 +45,7 @@ function Home() {
   const { regions, error } = data || {};
 
   return (
-    <DefaultTemplate>
+    <DefaultTemplate showHero={true}>
       <>
         {isError && error.length && <div> {error} </div>}
         {!isIdle && regions && !!Object.entries(regions).length && (
@@ -57,7 +57,7 @@ function Home() {
                 </h2>
                 <ListingCards
                   listings={get(regions[retailerType], "listings")}
-                />
+                  />
               </ListingGroups>
             ))}
           </React.Fragment>
