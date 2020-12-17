@@ -14,7 +14,7 @@ interface Props {
 }
  
 const DefaultTemplate: FC<Props> = ({children, showHero}) => {
-console.log(children, showHero)
+
   return (
     <AppWrapper>
       <Header />
