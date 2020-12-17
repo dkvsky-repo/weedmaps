@@ -40,6 +40,8 @@ const StarWrapper: StyledComponent<
   never
 > = styled.div<StyleProps>``;
 const RatingWrapper = styled(StarWrapper)``;
+const starWidth = '16px';
+const starHeight = '16px';
 
 function calcStarRating(ratingValue: number): any[] {
   let stars: any[] = Array(5).fill(null);
@@ -51,7 +53,9 @@ function calcStarRating(ratingValue: number): any[] {
       stars[i] = (
         <FullStar
           key={i}
-          children={<StarIcon type='full' width='16' height='16' />}
+          children={
+            <StarIcon type='full' width={starWidth} height={starHeight} />
+          }
         />
       );
       fullStars--;
@@ -59,7 +63,9 @@ function calcStarRating(ratingValue: number): any[] {
       stars[i] = (
         <FullStar
           key={i}
-          children={<StarIcon type='full' width='16' height='16' />}
+          children={
+            <StarIcon type='full' width={starWidth} height={starHeight} />
+          }
         />
       );
       partialStars = 0;
@@ -67,7 +73,9 @@ function calcStarRating(ratingValue: number): any[] {
       stars[i] = (
         <HalfStar
           key={i}
-          children={<StarIcon type='half' width='16' height='16' />}
+          children={
+            <StarIcon type='half' width={starWidth} height={starHeight} />
+          }
         />
       );
       partialStars = 0;
@@ -75,7 +83,9 @@ function calcStarRating(ratingValue: number): any[] {
       stars[i] = (
         <EmptyStar
           key={i}
-          children={<StarIcon type='empty' width='16' height='16' />}
+          children={
+            <StarIcon type='empty' width={starWidth} height={starHeight} />
+          }
         />
       );
     }
