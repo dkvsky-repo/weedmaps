@@ -13,9 +13,12 @@
 // 4.24 = 4 full stars, 1 empty star
 // 4.74 = 4 full stars, 1 half star
 // 4.75 = 5 full stars
+
+// ✅
+
 import React from 'react';
 import styled, { StyledComponent } from 'styled-components';
-import StarIcon from './starIcon';
+import StarIcon from '../../icons/starIcon';
 
 type StarProps = {
   children?: any;
@@ -38,73 +41,49 @@ const StarWrapper: StyledComponent<
 > = styled.div<StyleProps>``;
 const RatingWrapper = styled(StarWrapper)``;
 
-const Star = styled.div`
-  width: 16px;
-  height: 16px;
-`;
+function calcStarRating(ratingValue: number): any[] {
+  let stars: any[] = Array(5).fill(null);
+  let partialStars = parseInt(ratingValue.toFixed(2).split('.')[1]);
+  let fullStars = parseInt(ratingValue.toFixed(2).split('.')[0]);
+
+  for (let i = 0; i < stars.length; i++) {
+    if (fullStars > 0) {
+      stars[i] = (
+        <FullStar
+          key={i}
+          children={<StarIcon type='full' width='16' height='16' />}
+        />
+      );
+      fullStars--;
+    } else if (partialStars >= 75) {
+      stars[i] = (
+        <FullStar
+          key={i}
+          children={<StarIcon type='full' width='16' height='16' />}
+        />
+      );
+      partialStars = 0;
+    } else if (partialStars >= 25 && partialStars <= 74) {
+      stars[i] = (
+        <HalfStar
+          key={i}
+          children={<StarIcon type='half' width='16' height='16' />}
+        />
+      );
+      partialStars = 0;
+    } else {
+      stars[i] = (
+        <EmptyStar
+          key={i}
+          children={<StarIcon type='empty' width='16' height='16' />}
+        />
+      );
+    }
+  }
+  return stars;
+}
 
 function Stars({ rating }: StarsProps) {
-  function calcStarRating(ratingValue: number): any[] {
-    let stars: any[] = Array(5).fill(null);
-    let partialStars = parseInt(ratingValue.toFixed(2).split('.')[1]);
-    let fullStars = parseInt(ratingValue.toFixed(2).split('.')[0]);
-
-    // TODO: Change 'map' because value is not used.
-    stars.map((val, i) => {
-      if (fullStars > 0) {
-        stars[i] = (
-          <FullStar
-            key={i}
-            children={
-              <Star>
-                <StarIcon type='full' />
-              </Star>
-            }
-          />
-        );
-        fullStars--;
-      } else if (fullStars === 0) {
-        if (partialStars >= 75) {
-          stars[i] = (
-            <FullStar
-              key={i}
-              children={
-                <Star>
-                  <StarIcon type='full' />
-                </Star>
-              }
-            />
-          );
-          partialStars = 0;
-        } else if (partialStars >= 25 && partialStars <= 74) {
-          stars[i] = (
-            <HalfStar
-              key={i}
-              children={
-                <Star>
-                  <StarIcon type='half' />
-                </Star>
-              }
-            />
-          );
-          partialStars = 0;
-        } else {
-          stars[i] = (
-            <EmptyStar
-              key={i}
-              children={
-                <Star>
-                  <StarIcon type='empty' />
-                </Star>
-              }
-            />
-          );
-        }
-      }
-    });
-    return stars;
-  }
-
   return (
     <>
       {calcStarRating(rating).map((item) => item)}

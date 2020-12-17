@@ -1,10 +1,14 @@
 import React from 'react';
+import { IconParams } from './icons';
 
-type StarIconProps = {
+type StarIconProps = IconParams & {
   type: string;
 };
 
 function StarIcon(props: StarIconProps) {
+  const foregroundColor = '#00A8A3';
+  const backgroundColor = '#DDDDDD';
+
   let fillColor: {
     left: string;
     right: string;
@@ -15,17 +19,17 @@ function StarIcon(props: StarIconProps) {
 
   switch (props.type) {
     case 'half':
-      fillColor.left = '#00A8A3';
-      fillColor.right = '#DDDDDD';
+      fillColor.left = foregroundColor;
+      fillColor.right = backgroundColor;
       break;
     case 'full':
-      fillColor.left = '#00A8A3';
-      fillColor.right = '#00A8A3';
+      fillColor.left = foregroundColor;
+      fillColor.right = foregroundColor;
       break;
     case 'empty':
     default:
-      fillColor.left = '#DDDDDD';
-      fillColor.right = '#DDDDDD';
+      fillColor.left = backgroundColor;
+      fillColor.right = backgroundColor;
   }
 
   return (
