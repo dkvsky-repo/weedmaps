@@ -6,25 +6,71 @@
 // Monday: Closed
 // Tuesday: 8:00am to 8:00pm
 
-import React from "react";
-import styled, { StyledComponent } from "styled-components";
+// ✅
+
+import React from 'react';
+import styled, { StyledComponent } from 'styled-components';
 
 type TestId = {
-  "data-testid": string;
+  'data-testid': string;
 };
 type StyleProps = {};
-const TimeWrapper: StyledComponent<"div", any, TestId, never> = styled.div<
-  StyleProps
->``;
+const TimeWrapper: StyledComponent<
+  'div',
+  any,
+  TestId,
+  never
+> = styled.div<StyleProps>``;
 const ClosedWrapper = styled(TimeWrapper)``;
 const DayWrapper = styled(TimeWrapper)``;
 
+const BusinessHours = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+const DayOfWeek = styled.span`
+  text-transform: capitalize;
+`;
+
 function HoursOfBusiness({ businessHours }: { businessHours: any }) {
+  function getHoursDetails() {
+    let day: string;
+    let isClosed: boolean = false;
+    let timeOpen: string;
+    let timeClose: string;
+
+    let retailerHours: any[] = [];
+    Object.entries(businessHours).forEach((item: any) => {
+      day = item[0];
+      if (item[1]['is_closed']) {
+        isClosed = true;
+        retailerHours.push({ day, isClosed });
+      } else {
+        timeOpen = item[1]['open'];
+        timeClose = item[1]['close'];
+        retailerHours.push({ day, timeOpen, timeClose });
+      }
+    });
+    return retailerHours;
+  }
+
   return (
     <>
-      <Closed day="monday" />
-      <Time time="8:00am" day="sunday" frame="open" />
-      <Time time="8:00pm" day="sunday" frame="close" />
+      {getHoursDetails().map((item, i) => {
+        return item.isClosed ? (
+          <BusinessHours key={`${item.day}-${i}`}>
+            <DayOfWeek>{item.day}</DayOfWeek>:&nbsp;
+            <Closed day={item.day} />
+          </BusinessHours>
+        ) : (
+          <BusinessHours key={`${item.day}-${i}`}>
+            <DayOfWeek>{item.day}</DayOfWeek>:&nbsp;
+            <Time time={item.timeOpen} day={item.day} frame='open' />
+            &nbsp;to&nbsp;
+            <Time time={item.timeClose} day={item.day} frame='close' />
+          </BusinessHours>
+        );
+      })}
     </>
   );
 }
@@ -32,14 +78,14 @@ function HoursOfBusiness({ businessHours }: { businessHours: any }) {
 // ~~~~~~~~~~~~~~~~ DO NOT MODIFY BELOW THIS LINE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 export default HoursOfBusiness;
 type Day =
-  | "sunday"
-  | "monday"
-  | "tuesday"
-  | "wednesday"
-  | "thursday"
-  | "friday"
-  | "saturday";
-type Frame = "open" | "close";
+  | 'sunday'
+  | 'monday'
+  | 'tuesday'
+  | 'wednesday'
+  | 'thursday'
+  | 'friday'
+  | 'saturday';
+type Frame = 'open' | 'close';
 
 function Day({ day }: { day: Day }) {
   return <DayWrapper data-testid={day}>{day}</DayWrapper>;

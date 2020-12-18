@@ -38,21 +38,21 @@ The goal of this code challenge is to help us better understand some of your cap
 
 This challenge is a partially completed project which is described in more detail below. We encourage you to complete as much of this as you're comfortable with, as we recognize your time is valuable. We're interested in how you solve problems and make decisions when working within constraints. For any area that you aren't able to complete, feel free to include a short blurb about how you would approach the problem and why.
 
-### Routing
+### ✅ Routing
 
 Implement the router and links between various components. More detail is available in the component definitions.
 
-- ✅ `src/index.tsx`
-- ✅ `src/components/header/index.tsx`
-- ✅ `src/components/listing-card/index.tsx`
-- ✅ `src/templates/default/index.tsx`
-- ✅ `src/pages/retailer.tsx`
+- `src/index.tsx`
+- `src/components/header/index.tsx`
+- `src/components/listing-card/index.tsx`
+- `src/templates/default/index.tsx`
+- `src/pages/retailer.tsx`
 
-### Star rating
+### ✅ Star rating
 
 Using the provided component, `/src/components/star/index.tsx`, implement the remaining user interface for star ratings as described in the component definition.
 
-### Retailer hours
+### ✅ Retailer hours
 
 Using the provided component, `src/components/hours/index.tsx`, render the retailer hours for each day of the week.
 
