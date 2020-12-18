@@ -38,7 +38,9 @@ const StarWrapper: StyledComponent<
   any,
   TestId,
   never
-> = styled.div<StyleProps>``;
+> = styled.div<StyleProps>`
+  display: inline-block;
+`;
 const RatingWrapper = styled(StarWrapper)``;
 const starWidth = '16px';
 const starHeight = '16px';
