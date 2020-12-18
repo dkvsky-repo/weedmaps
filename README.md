@@ -56,9 +56,14 @@ Using the provided component, `/src/components/star/index.tsx`, implement the re
 
 Using the provided component, `src/components/hours/index.tsx`, render the retailer hours for each day of the week.
 
-### Retailer page
+### ✅ Retailer page
 
 We encourage you to have fun with the ui styling here. With a focus on mobile devices, finish styling the retailer page, `/src/pages/retailer.tsx`. Use modern CSS and responsive techniques to style the information you would like to see rendered. At a minimum, this should inlude the retailer's name, star rating, and business hours.
+
+#### Screenshots
+
+<img src="screenshot-mobile.png" width=280 />
+<img src="screenshot-desktop.png" width=600 />
 
 ## Delivering Your Completed Challenge
 
