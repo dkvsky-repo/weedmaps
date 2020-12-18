@@ -27,6 +27,7 @@ const DayWrapper = styled(TimeWrapper)``;
 const BusinessHours = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
 `;
 const DayOfWeek = styled.span`
   text-transform: capitalize;

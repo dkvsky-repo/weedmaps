@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const AppHeader = styled.div`
   height: 70px;
@@ -24,4 +24,5 @@ export const AppContent = styled.div`
   width: 90%;
   max-width: 1200px;
   margin: 10px auto;
+  color: #252935;
 `;

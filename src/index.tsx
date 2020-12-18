@@ -11,14 +11,14 @@
 
 // ✅
 
-import React from "react";
-import { render } from "react-dom";
+import React from 'react';
+import { render } from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { createGlobalStyle } from "styled-components";
-import Home from "./pages/";
-import Retailer from "./pages/retailer";
-import { useGlobal, GlobalContext } from "./context";
-import { QueryCache, ReactQueryCacheProvider } from "react-query";
+import { createGlobalStyle } from 'styled-components';
+import Home from './pages/';
+import Retailer from './pages/retailer';
+import { useGlobal, GlobalContext } from './context';
+import { QueryCache, ReactQueryCacheProvider } from 'react-query';
 
 const queryCache = new QueryCache();
 const GlobalStyle = createGlobalStyle`
@@ -27,6 +27,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     min-width: 320px;
     font-family: sans-serif;
+    line-height: 1.5;
   }
 `;
 
@@ -38,8 +39,8 @@ function ContextWrapper() {
         <GlobalStyle />
         <Router>
           <Switch>
-            <Route path="/:retailerType/:wmid" component={Retailer} />
-            <Route path="/" exact component={Home} />
+            <Route path='/:retailerType/:wmid' component={Retailer} />
+            <Route path='/' exact component={Home} />
           </Switch>
         </Router>
       </ReactQueryCacheProvider>
@@ -47,4 +48,4 @@ function ContextWrapper() {
   );
 }
 
-render(<ContextWrapper />, document.getElementById("root"));
+render(<ContextWrapper />, document.getElementById('root'));

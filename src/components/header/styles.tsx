@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const AppHeader = styled.div`
   height: 70px;
@@ -12,5 +12,9 @@ export const AppHeader = styled.div`
   img {
     width: 110px;
     height: 25px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    justify-content: center;
   }
 `;
