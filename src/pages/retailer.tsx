@@ -10,6 +10,14 @@
 // Feel free to style the page as you see fit so that it looks nice on mobile
 // Be sure to include name, stars, and hours at minimum
 
+/* 👉 I could have designed the styles better. I applied the minimal necessary
+ to make it look good enough without exceeding the alloted time.
+ In a real case scenario, I would review Styled Components
+ documentation again to see available options to make it easier to scale and 
+ maintain. I hope this meets your expectations.
+ ✅
+*/
+
 import React from 'react';
 import DefaultTemplate from '../templates/default';
 import useRetailer from '../hooks/use-retailer';
@@ -71,6 +79,20 @@ const Contact = styled.div`
   margin-bottom: 16px;
 `;
 
+const RetailerWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+`;
+const RetailerIdentity = styled.div`
+  flex-direction: column;
+  align-self: center;
+`;
+const RetailerDetails = styled.div``;
+
 function Retailer({ match }: { match: any }) {
   const { wmid } = match.params;
   const { data, isLoading, isError } = useRetailer(wmid);
@@ -82,36 +104,45 @@ function Retailer({ match }: { match: any }) {
     <DefaultTemplate>
       {isError && <div> {isError} </div>}
       {isLoading && <div>loading</div>}
-      <AvatarWrapper>
-        <Avatar
-          img={`${get(listing, 'avatar_image.small_url')}`}
-          width='120px'
-          height='120px'
-        />
-      </AvatarWrapper>
-      <BusinessName name={name} />
-      <Stars rating={rating} />
 
-      <Location>
-        <p>
-          {listing.city},&nbsp;{listing.state}
-        </p>
-      </Location>
+      <RetailerWrapper>
+        <RetailerIdentity>
+          <AvatarWrapper>
+            <Avatar
+              img={`${get(listing, 'avatar_image.small_url')}`}
+              width='120px'
+              height='120px'
+            />
+          </AvatarWrapper>
+          <BusinessName name={name} />
+          <Stars rating={rating} />
 
-      <ShopStatus>
-        {listing.open_now ? (
-          <h3 className='open'>Open</h3>
-        ) : (
-          <h3 className='closed'>Closed</h3>
-        )}
-      </ShopStatus>
+          <Location>
+            <p>
+              {listing.city},&nbsp;{listing.state}
+            </p>
+          </Location>
+        </RetailerIdentity>
 
-      <HoursWrapper>
-        {business_hours && <HoursOfBusiness businessHours={business_hours} />}
-      </HoursWrapper>
+        <RetailerDetails>
+          <ShopStatus>
+            {listing.open_now ? (
+              <h3 className='open'>Open</h3>
+            ) : (
+              <h3 className='closed'>Closed</h3>
+            )}
+          </ShopStatus>
 
-      <Contact>{listing.phone_number}</Contact>
-      <Contact>{listing.email}</Contact>
+          <HoursWrapper>
+            {business_hours && (
+              <HoursOfBusiness businessHours={business_hours} />
+            )}
+          </HoursWrapper>
+
+          <Contact>{listing.phone_number}</Contact>
+          <Contact>{listing.email}</Contact>
+        </RetailerDetails>
+      </RetailerWrapper>
     </DefaultTemplate>
   );
 }
